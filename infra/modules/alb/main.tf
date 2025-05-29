@@ -1,5 +1,5 @@
 resource "aws_lb" "alb" {
-  name               = "medusa-alb"
+  name               = var.aws_lb_name
   internal           = false
   load_balancer_type = "application"
   subnets            = var.public_subnet_ids
@@ -7,7 +7,7 @@ resource "aws_lb" "alb" {
 }
 
 resource "aws_lb_target_group" "tg" {
-  name     = "medusa-tg"
+  name     = var.lb_target_group_name
   port     = 9000
   protocol = "HTTP"
   vpc_id   = var.vpc_id
